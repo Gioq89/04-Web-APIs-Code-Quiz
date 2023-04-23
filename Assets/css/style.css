@@ -1,7 +1,7 @@
 /* nav bar css */
 .navbar {
     height: 50px;
-    background-color: #000000;
+    background-color: teal;
     color: #fff;
     padding: 10px;
   }
@@ -36,15 +36,26 @@
 
   div button {
     border: none;
-    background-color: hsl(360, 91%, 36%);
-    border-radius: 25px;
+    background-color: teal;
+    border-radius: 50px;
     color: hsl(0, 0%, 100%);
     display: inline-block;
-    font-size: 22px;
+    font-size: 36px;
     line-height: 22px;
-    margin: 16px 16px 16px 20px;
-    padding: 14px 34px;
+    margin: 20px;
+    padding: 20px 30px;
     display: flex;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0 5px rgb(2, 53, 53);
+}
+
+div button:hover {
+    background-color: rgba(0, 128, 128, 0.788)
+}
+
+div button:active {
+  background-color: teal;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
