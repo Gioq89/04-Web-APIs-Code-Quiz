@@ -1,0 +1,22 @@
+/* nav bar css */
+.navbar {
+    height: 50px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .navbar .scores {
+    float: left;
+  }
+  
+  .navbar .timer {
+    float: right;
+  }
+
+  
