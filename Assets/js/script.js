@@ -1,8 +1,10 @@
+var timerStarted = false;
 var start = document.getElementById("start");
 
 start.addEventListener("click", startTimer);
 
 function startTimer() {
+  if(!timerStarted) {
   var timer = document.getElementById("timer");
   var seconds = 75;
 
@@ -14,4 +16,7 @@ function startTimer() {
       clearInterval();
     }
   }, 1000);
+  
+  timerStarted = true;
+}
 }
