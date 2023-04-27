@@ -1,3 +1,4 @@
+// variable of questions
 var questions = [
   {
     question: "Which is NOT a primitive type?",
@@ -26,17 +27,22 @@ var questions = [
   }
 ];
 
+// creating variables
 var timerStarted = false;
 var start = document.getElementById("start");
 
-start.addEventListener("click", startTimer);
+// event listener waiting for start quiz button to be clicked
+start.addEventListener("click", function() {
+  startTimer();
+  startQuiz();
+});
 
+// Function to start timer when Button is clicked
 function startTimer() {
   if (!timerStarted) {
     var timer = document.getElementById("timer");
     var seconds = 75;
-
-    setInterval(function () {
+    var intervalId = setInterval(function () {
       seconds--;
       if (seconds < 0) {
         clearInterval();
@@ -47,5 +53,23 @@ function startTimer() {
     }, 1000);
 
     timerStarted = true;
+  }
+}
+
+
+// Function to have questions appear when Button is clicked
+function startQuiz() {
+  var questionIndex = 0;
+  var questionContainer = document.getElementById("questions-container");
+  var currentQuestion = questions[questionIndex];
+
+  var questionElement = document.createElement("h2");
+  questionElement.textContent = currentQuestion.question;
+  questionContainer.appendChild(questionElement);
+
+  for (var i = 0; i < currentQuestion.options.length; i++) {
+    var optionElement = document.createElement("button");
+    optionElement.textContent = currentQuestion.options[i];
+    questionContainer.appendChild(optionElement);
   }
 }
