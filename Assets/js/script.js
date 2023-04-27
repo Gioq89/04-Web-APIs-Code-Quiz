@@ -68,14 +68,41 @@ function startQuiz() {
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
 
-  var questionElement = document.createElement("div");
-  questionElement.textContent = currentQuestion.question;
-  questionElement.classList.add("question-text");
-  questionContainer.appendChild(questionElement);
+  displayQuestion(currentQuestion);
+}
+// display new question once an answer is selected
+function displayQuestion(question) {
+  var questionEl = document.createElement("div");
+  questionEl.textContent = question.question;
+  questionEl.classList.add("question-text");
 
-  for (var i = 0; i < currentQuestion.options.length; i++) {
-    var optionElement = document.createElement("button");
-    optionElement.textContent = currentQuestion.options[i];
-    questionContainer.appendChild(optionElement);
+  var questionContainer = document.getElementById("questions-container");
+  questionContainer.appendChild(questionEl);
+
+  for (var i = 0; i < question.options.length; i++) {
+    var optionEl = document.createElement("button");
+    optionEl.textContent = question.options[i];
+    questionContainer.appendChild(optionEl);
+
+    optionEl.addEventListener("click", function() {
+      checkAnswer(this.textContent, question.answer);
+    });
+  }
+}
+
+// checks for correct answer
+function checkAnswer(selectedOption, correctAnswer) {
+  if (selectedOption === correctAnswer) {
+    // answer is correct, move on to the next question
+    questionIndex++;
+    if (questionIndex < questions.length) {
+      var currentQuestion = questions[questionIndex];
+      displayQuestion(currentQuestion);
+    } else {
+      endQuiz();
+    }
+  } else {
+    // answer is incorrect, deduct 10 seconds from the timer
+    seconds -= 10;
   }
 }
