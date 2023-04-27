@@ -1,4 +1,5 @@
 // variable of questions
+
 var questions = [
   {
     question: "Which is NOT a primitive type?",
@@ -52,7 +53,8 @@ var seconds = 75;
 var questionIndex = 0;
 var intervalId;
 var result = document.getElementById("result");
-
+var correctSound = new Audio("Assets/sounds/correct.wav");
+var incorrectSound = new Audio("Assets/sounds/incorrect.wav");
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function () {
   startTimer();
@@ -109,13 +111,16 @@ function startQuiz() {
   // checks for correct answer
   function checkAnswer(selectedOption, correctAnswer) {
     if (selectedOption === correctAnswer) {
+      debugger;
       // answer is correct, move on to the next question
       result.innerText = "Correct!";
       result.setAttribute("class", "correct result");
+      correctSound.play();
     } else {
       // answer is incorrect, deduct 10 seconds from the timer
       result.innerText = "Incorrect!";
       result.setAttribute("class", "incorrect result");
+      incorrectSound.play();
       seconds -= 10;
     }
     // move on to next question either way
