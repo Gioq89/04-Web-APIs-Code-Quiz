@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Fundementals Quiz</title>
+    <title>JavaScript Fundamentals Quiz</title>
     <link rel="stylesheet" href="Assets/css/style.css">
   </head>
   <body>
     <header>
       <nav class="navbar">
         <a href="#" class="scores">View Scores</a>
+        <div id="timer-container"> 
         <span class="timer">Timer: <span id="timer">75 seconds</span>
       </nav>
     </header>
@@ -18,53 +19,15 @@
       <h1>Coding Quiz Challenge</h1>
       <div>
         <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur
-        architecto, accusantium nam error eius quam. Ea impedit error corporis,
-        molestiae sint est voluptates dolore voluptatem illum molestias nobis
-        fuga ut?
+          Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
         </p>
+        <div class = button>
+          <button id="start">Start Quiz</button>
+        </div>
+        </div>
       </div>
-      <div class = button>
-        <button id="start">Start Quiz</button>
-    </div>
-    <div id="question1-page">
-      <h2>Question 1</h2>
-      <p>Which is NOT a primitive type?</p>
-      <input type="radio" name="question1" value=a)>a. string<br>
-      <input type="radio" name="question1" value=b)>b. number<br>
-      <input type="radio" name="question1" value=c)>c. alerts<br>
-      <input type="radio" name="question1" value=d)>d. boolean<br>
-      <br>
-      <h2>Question 2</h2>
-      <p>The condition in an if / else statement is enclosed within _____.</p>
-      <input type="radio" name="question2" value=a)>a. quotes<br>
-      <input type="radio" name="question2" value=b)>b. curly brackets<br>
-      <input type="radio" name="question2" value=c)>c. parentheses<br>
-      <input type="radio" name="question2" value=d)>d. square brackets<br>
-      <br>
-      <h2>Question 3</h2>
-      <p>Arrays in Javascript can be used to store _____.</p>
-      <input type="radio" name="question3" value=a)>a. numbers and strings<br>
-      <input type="radio" name="question3" value=b)>b. other arrays<br>
-      <input type="radio" name="question3" value=c)>c. booleans<br>
-      <input type="radio" name="question3" value=d)>d. all of the above<br>
-      <br>
-      <h2>Question 4</h2>
-      <p>String values must be enclosed within _____ when being assigned to variables.</p>
-      <input type="radio" name="question4" value=a)>a. comma<br>
-      <input type="radio" name="question4" value=b)>b. curly brackets<br>
-      <input type="radio" name="question4" value=c)>c. quotes<br>
-      <input type="radio" name="question4" value=d)>d. parentheses<br>
-      <br>
-      <h2>Question 5</h2>
-      <p>A very useful tool used during development and debugging for printing content to the debugger is:</p>
-      <input type="radio" name="question5" value=a)>a. JavaScript<br>
-      <input type="radio" name="question5" value=b)>b. terminal / bash<br>
-      <input type="radio" name="question5" value=c)>c. for loops<br>
-      <input type="radio" name="question5" value=d)>d. console.log<br>
-      <br>
-      <button id="submit-button">Submit</button>
-    </div>
+      
+      <div id="questions-container"></div>
     
 <script src="Assets/js/script.js"></script>
     </main>
