@@ -94,6 +94,11 @@ function displayQuestion(question) {
 function checkAnswer(selectedOption, correctAnswer) {
   if (selectedOption === correctAnswer) {
     // answer is correct, move on to the next question
+  } else {
+    // answer is incorrect, deduct 10 seconds from the timer
+    seconds -= 10;
+  }
+  // move on to next question either way
     questionIndex++;
     if (questionIndex < questions.length) {
       var currentQuestion = questions[questionIndex];
@@ -101,10 +106,6 @@ function checkAnswer(selectedOption, correctAnswer) {
     } else {
       endQuiz();
     }
-  } else {
-    // answer is incorrect, deduct 10 seconds from the timer
-    seconds -= 10;
-  }
 }
 
 function endQuiz() {
