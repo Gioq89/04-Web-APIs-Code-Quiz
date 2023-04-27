@@ -1,69 +1,73 @@
 /* nav bar css */
 .navbar {
-    height: 50px;
-    background-color: teal;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  .navbar a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .navbar .scores {
-    float: left;
-  }
-  
-  .navbar .timer {
-    float: right;
-  }
-
-  /* body css */
-  h1 {
-    padding: 10px;
-    text-align: center;
-  }
-
-  div p {
-    text-align: center;
-  }
-
-.button {
-    display: flex;
-    justify-content: center;
+  height: 50px;
+  background-color: teal;
+  color: #fff;
+  padding: 10px;
 }
 
-  div button {
-    border: none;
-    background-color: teal;
-    border-radius: 50px;
-    color: hsl(0, 0%, 100%);
-    display: inline-block;
-    font-size: 36px;
-    line-height: 22px;
-    margin: 20px;
-    padding: 20px 30px;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 5px rgb(2, 53, 53);
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .scores {
+  float: left;
+}
+
+.navbar .timer {
+  float: right;
+}
+
+/* body css */
+h1 {
+  padding: 10px;
+  text-align: center;
+}
+
+div p {
+  text-align: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+div button {
+  border: none;
+  background-color: teal;
+  border-radius: 50px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 36px;
+  line-height: 22px;
+  margin: 20px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 5px rgb(2, 53, 53);
 }
 
 div button:hover {
-    background-color: rgba(0, 128, 128, 0.788)
+  background-color: rgba(0, 128, 128, 0.788)
 }
 
 div button:active {
-  background-color: teal;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+background-color: teal;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+
+.hide {
+  display: none;
 }
 
 #questions-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 

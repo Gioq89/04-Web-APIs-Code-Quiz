@@ -33,6 +33,10 @@ var start = document.getElementById("start");
 var seconds = 75;
 var questionIndex = 0;
 var intervalId;
+var resultEl = document.createElement("div")
+var result = document.createElement("ol");
+var correct = document.createElement("li");
+var incorrect = document.createElement("li");
 
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function() {
@@ -60,13 +64,11 @@ function startTimer() {
 
 // Function to have questions appear when Button is clicked
 function startQuiz() {
-  // Remove element to make space for question
-  document.querySelector("main h1").remove();
-  document.querySelector("main p").remove();
-  document.querySelector("main button").remove();
-
+  var landingArea = document.getElementById("landing-area");
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
+
+  landingArea.setAttribute("class", "hide")
 
   displayQuestion(currentQuestion, questionContainer);
 
@@ -85,6 +87,7 @@ function displayQuestion(question, nextQuestion) {
 
     optionEl.addEventListener("click", function() {
       checkAnswer(this.textContent, question.answer);
+      
     });
   }
 }
