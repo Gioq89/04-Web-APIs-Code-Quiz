@@ -3,28 +3,46 @@ var questions = [
   {
     question: "Which is NOT a primitive type?",
     options: ["a. string", "b. number", "c. alerts", "d. boolean"],
-    answer: "c. alerts"
+    answer: "c. alerts",
   },
   {
-    question: "The condition in an if / else statement is enclosed within _____.",
-    options: ["a. quotes", "b. curly brackets", "c. parentheses", "d. square brackets"],
-    answer: "c. parentheses"
+    question:
+      "The condition in an if / else statement is enclosed within _____.",
+    options: [
+      "a. quotes",
+      "b. curly brackets",
+      "c. parentheses",
+      "d. square brackets",
+    ],
+    answer: "c. parentheses",
   },
   {
     question: "Arrays in Javascript can be used to store _____.",
-    options: ["a. numbers and strings", "b. other arrays", "c. booleans", "d. all of the above"],
-    answer: "d. all of the above"
+    options: [
+      "a. numbers and strings",
+      "b. other arrays",
+      "c. booleans",
+      "d. all of the above",
+    ],
+    answer: "d. all of the above",
   },
   {
-    question: "String values must be enclosed within _____ when being assigned to variables.",
+    question:
+      "String values must be enclosed within _____ when being assigned to variables.",
     options: ["a. comma", "b. curly brackets", "c. quotes", "d. parentheses"],
-    answer: "c. quotes"
+    answer: "c. quotes",
   },
   {
-    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    options: ["a. JavaScript", "b. terminal / bash", "c. for loops", "d. console.log"],
-    answer: "d. console.log"
-  }
+    question:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    options: [
+      "a. JavaScript",
+      "b. terminal / bash",
+      "c. for loops",
+      "d. console.log",
+    ],
+    answer: "d. console.log",
+  },
 ];
 
 // creating variables
@@ -33,13 +51,10 @@ var start = document.getElementById("start");
 var seconds = 75;
 var questionIndex = 0;
 var intervalId;
-var resultEl = document.createElement("div")
-var result = document.createElement("ol");
-var correct = document.createElement("li");
-var incorrect = document.createElement("li");
+var result = document.getElementById("result");
 
 // event listener waiting for start quiz button to be clicked
-start.addEventListener("click", function() {
+start.addEventListener("click", function () {
   startTimer();
   startQuiz();
 });
@@ -68,39 +83,42 @@ function startQuiz() {
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
 
-  landingArea.setAttribute("class", "hide")
+  landingArea.setAttribute("class", "hide");
 
   displayQuestion(currentQuestion, questionContainer);
 
-// display the next question once an answer is selected
-function displayQuestion(question, nextQuestion) {
-  nextQuestion.textContent = "";
-  var questionEl = document.createElement("div");
-  questionEl.textContent = question.question;
-  questionEl.classList.add("question-text");
-  nextQuestion.appendChild(questionEl);
+  // display the next question once an answer is selected
+  function displayQuestion(question, nextQuestion) {
+    nextQuestion.textContent = "";
+    var questionEl = document.createElement("div");
+    questionEl.textContent = question.question;
+    questionEl.classList.add("question-text");
+    nextQuestion.appendChild(questionEl);
 
-  for (var i = 0; i < question.options.length; i++) {
-    var optionEl = document.createElement("button");
-    optionEl.textContent = question.options[i];
-    questionContainer.appendChild(optionEl);
+    for (var i = 0; i < question.options.length; i++) {
+      var optionEl = document.createElement("button");
+      optionEl.textContent = question.options[i];
+      questionContainer.appendChild(optionEl);
 
-    optionEl.addEventListener("click", function() {
-      checkAnswer(this.textContent, question.answer);
-      
-    });
+      optionEl.addEventListener("click", function () {
+        checkAnswer(this.textContent, question.answer);
+      });
+    }
   }
-}
 
-// checks for correct answer
-function checkAnswer(selectedOption, correctAnswer) {
-  if (selectedOption === correctAnswer) {
-    // answer is correct, move on to the next question
-  } else {
-    // answer is incorrect, deduct 10 seconds from the timer
-    seconds -= 10;
-  }
-  // move on to next question either way
+  // checks for correct answer
+  function checkAnswer(selectedOption, correctAnswer) {
+    if (selectedOption === correctAnswer) {
+      // answer is correct, move on to the next question
+      result.innerText = "Correct!";
+      result.setAttribute("class", "correct result");
+    } else {
+      // answer is incorrect, deduct 10 seconds from the timer
+      result.innerText = "Incorrect!";
+      result.setAttribute("class", "incorrect result");
+      seconds -= 10;
+    }
+    // move on to next question either way
     questionIndex++;
     if (questionIndex < questions.length) {
       var currentQuestion = questions[questionIndex];
@@ -108,10 +126,10 @@ function checkAnswer(selectedOption, correctAnswer) {
     } else {
       endQuiz();
     }
-}
+  }
 
-function endQuiz() {
-  clearInterval(intervalId);
-  var timer = document.getElementById("timer");
-}
+  function endQuiz() {
+    clearInterval(intervalId);
+    var timer = document.getElementById("timer");
+  }
 }
