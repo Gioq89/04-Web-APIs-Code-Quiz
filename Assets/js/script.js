@@ -30,6 +30,9 @@ var questions = [
 // creating variables
 var timerStarted = false;
 var start = document.getElementById("start");
+var seconds = 75;
+var questionIndex = 0;
+var intervalId;
 
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function() {
@@ -41,8 +44,7 @@ start.addEventListener("click", function() {
 function startTimer() {
   if (!timerStarted) {
     var timer = document.getElementById("timer");
-    var seconds = 75;
-    var intervalId = setInterval(function () {
+    intervalId = setInterval(function () {
       seconds--;
       if (seconds < 0) {
         clearInterval();
@@ -56,15 +58,19 @@ function startTimer() {
   }
 }
 
-
 // Function to have questions appear when Button is clicked
 function startQuiz() {
-  var questionIndex = 0;
+  // Remove  element from the DOM
+  document.querySelector("main h1").remove();
+  document.querySelector("main p").remove();
+  document.querySelector("main button").remove();
+
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
 
-  var questionElement = document.createElement("h2");
+  var questionElement = document.createElement("div");
   questionElement.textContent = currentQuestion.question;
+  questionElement.classList.add("question-text");
   questionContainer.appendChild(questionElement);
 
   for (var i = 0; i < currentQuestion.options.length; i++) {
