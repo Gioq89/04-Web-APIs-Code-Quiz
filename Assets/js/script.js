@@ -60,7 +60,7 @@ function startTimer() {
 
 // Function to have questions appear when Button is clicked
 function startQuiz() {
-  // Remove  element from the DOM
+  // Remove element to make space for question
   document.querySelector("main h1").remove();
   document.querySelector("main p").remove();
   document.querySelector("main button").remove();
@@ -68,16 +68,15 @@ function startQuiz() {
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
 
-  displayQuestion(currentQuestion);
-}
-// display new question once an answer is selected
-function displayQuestion(question) {
+  displayQuestion(currentQuestion, questionContainer);
+
+// display the next question once an answer is selected
+function displayQuestion(question, nextQuestion) {
+  nextQuestion.textContent = "";
   var questionEl = document.createElement("div");
   questionEl.textContent = question.question;
   questionEl.classList.add("question-text");
-
-  var questionContainer = document.getElementById("questions-container");
-  questionContainer.appendChild(questionEl);
+  nextQuestion.appendChild(questionEl);
 
   for (var i = 0; i < question.options.length; i++) {
     var optionEl = document.createElement("button");
@@ -102,7 +101,7 @@ function checkAnswer(selectedOption, correctAnswer) {
     questionIndex++;
     if (questionIndex < questions.length) {
       var currentQuestion = questions[questionIndex];
-      displayQuestion(currentQuestion);
+      displayQuestion(currentQuestion, questionContainer);
     } else {
       endQuiz();
     }
@@ -111,4 +110,5 @@ function checkAnswer(selectedOption, correctAnswer) {
 function endQuiz() {
   clearInterval(intervalId);
   var timer = document.getElementById("timer");
+}
 }
