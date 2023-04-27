@@ -106,3 +106,8 @@ function checkAnswer(selectedOption, correctAnswer) {
     seconds -= 10;
   }
 }
+
+function endQuiz() {
+  clearInterval(intervalId);
+  var timer = document.getElementById("timer");
+}
