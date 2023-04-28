@@ -20,6 +20,9 @@
 }
 
 /* body css */
+body {
+  overflow: hidden;
+}
 h1 {
   padding: 10px;
   text-align: center;
@@ -113,7 +116,7 @@ div button:active {
 }
 
 .highscores {
-  border-top:2px dashed white ;
+  border-top: 2px dashed white;
   display: flex;
   justify-content: space-around;
   background-color: #008080;
@@ -125,6 +128,30 @@ div button:active {
 #scores {
   display: flex;
   justify-content: space-around;
-  padding: 20px;
+  margin-top: 5px;
   font-size: 16px;
+  flex-wrap: wrap;
+}
+.userInfoContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #3f4646;
+}
+
+.userInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+}
+
+.userInfoContainer:nth-child(odd) {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.userInfoContainer:nth-child(even) {
+  background-color: #3f4646;
+  color: white;
 }
