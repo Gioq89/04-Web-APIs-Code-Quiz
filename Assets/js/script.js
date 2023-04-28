@@ -52,7 +52,9 @@ var start = document.getElementById("start");
 var seconds = 75;
 var questionIndex = 0;
 var intervalId;
+var submitArea = document.getElementById("submitArea");
 var result = document.getElementById("result");
+var questionsArea = document.getElementById("questions");
 var correctSound = new Audio("Assets/sounds/correct.wav");
 var incorrectSound = new Audio("Assets/sounds/incorrect.wav");
 var submitButton = document.getElementById("submit");
@@ -66,12 +68,21 @@ submitButton.addEventListener("click", function () {
   };
   usersArray.push(highscoreTable);
   window.localStorage.setItem("pop", JSON.stringify(usersArray));
+  showOrHide(submitArea, false);
 });
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function () {
   startTimer();
   startQuiz();
 });
+
+function showOrHide(element, show) {
+  if (show) {
+    element.removeAttribute("class", "hide");
+  } else {
+    element.setAttribute("class", "hide");
+  }
+}
 
 // Function to start timer when Button is clicked
 function startTimer() {
@@ -97,7 +108,7 @@ function startQuiz() {
   var questionContainer = document.getElementById("questions-container");
   var currentQuestion = questions[questionIndex];
 
-  landingArea.setAttribute("class", "hide");
+  showOrHide(landingArea, false);
 
   displayQuestion(currentQuestion, questionContainer);
 
@@ -145,7 +156,7 @@ function startQuiz() {
   }
 
   function endQuiz() {
+    showOrHide(questionsArea, false);
     clearInterval(intervalId);
-    var timer = document.getElementById("timer");
   }
 }
