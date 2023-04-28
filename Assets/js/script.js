@@ -59,26 +59,12 @@ var highscoreArea = document.getElementById('highscoreArea');
 var correctSound = new Audio('Assets/sounds/correct.wav');
 var incorrectSound = new Audio('Assets/sounds/incorrect.wav');
 var submitButton = document.getElementById('submit');
+var gobackButton = document.getElementById("goback");
+var clearHighScoresButton = document.getElementById("clear");
 var usersList = localStorage.getItem('users');
 var usersArray = [];
+var scores = document.getElementById('scores');
 
-submitButton.addEventListener('click', function () {
-  var userInitials = document.getElementById('name').value;
-
-  if (usersList) {
-    usersArray = JSON.parse(usersList);
-  }
-
-  var highscoreTable = {
-    intials: userInitials,
-    score: seconds,
-  };
-
-  usersArray.push(highscoreTable);
-  localStorage.setItem('users', JSON.stringify(usersArray));
-  showOrHide(submitArea, false);
-  showOrHide(highscoreArea, true);
-});
 // event listener waiting for start quiz button to be clicked
 start.addEventListener('click', function () {
   startTimer();
@@ -164,7 +150,6 @@ function startQuiz() {
     }
   }
   function displayHighscores() {
-    var scores = document.getElementById('scores');
     var parsedUsersList = JSON.parse(usersList);
     for (var i = 0; i < parsedUsersList.length; i++) {
       scores.innerHTML += `
@@ -182,4 +167,31 @@ function startQuiz() {
     clearInterval(intervalId);
     displayHighscores();
   }
+
+submitButton.addEventListener('click', function () {
+  var userInitials = document.getElementById('name').value;
+
+  if (usersList) {
+    usersArray = JSON.parse(usersList);
+  }
+
+  var highscoreTable = {
+    intials: userInitials,
+    score: seconds,
+  };
+
+  usersArray.push(highscoreTable);
+  localStorage.setItem('users', JSON.stringify(usersArray));
+  showOrHide(submitArea, false);
+  showOrHide(highscoreArea, true);
+});
+
+gobackButton.addEventListener("click", function () {
+  window.location.reload();
+});
+
+clearHighScoresButton.addEventListener("click", function() {
+  localStorage.clear();
+  scores.innerHTML = null;
+});
 }
