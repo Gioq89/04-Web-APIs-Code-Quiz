@@ -55,6 +55,7 @@ var intervalId;
 var submitArea = document.getElementById("submitArea");
 var result = document.getElementById("result");
 var questionsArea = document.getElementById("questions");
+var highscoreArea = document.getElementById("highscoreArea");
 var correctSound = new Audio("Assets/sounds/correct.wav");
 var incorrectSound = new Audio("Assets/sounds/incorrect.wav");
 var submitButton = document.getElementById("submit");
@@ -67,8 +68,9 @@ submitButton.addEventListener("click", function () {
     score: seconds,
   };
   usersArray.push(highscoreTable);
-  window.localStorage.setItem("pop", JSON.stringify(usersArray));
+  window.localStorage.setItem("users", JSON.stringify(usersArray));
   showOrHide(submitArea, false);
+  showOrHide(highscoreArea, true);
 });
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function () {
@@ -154,9 +156,22 @@ function startQuiz() {
       endQuiz();
     }
   }
+  function displayHighscores() {
+    var scores = document.getElementById("scores");
+    var usersList = JSON.parse(window.localStorage.getItem("users"));
+
+    for (var i = 0; i < usersList.length; i++) {
+      scores.innerHTML = `
+        <div>${usersList[i].intials}</div>
+        <div>${usersList[i].score}</div>
+        `;
+    }
+  }
 
   function endQuiz() {
     showOrHide(questionsArea, false);
+    showOrHide(submitArea, true);
     clearInterval(intervalId);
+    displayHighscores();
   }
 }
