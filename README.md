@@ -8,7 +8,7 @@ This challenge was completed to create a code quiz. It was created to build a ti
 https://gioq89.github.io/04-Web-APIs-Code-Quiz/
 
 ## Screenshot
-<img src="">
+<img src="Assets/images/screenshot-coding-quiz-challenge.png">
 
 ## Usage 
 To use this assignment, click on the start quiz button and answer the questions. Once you complete the quiz, you will be prompted to add your initials to the high score table!
