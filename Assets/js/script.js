@@ -67,6 +67,7 @@ var landingArea = document.getElementById("landing-area");
 var usersList = localStorage.getItem("users");
 var usersArray = [];
 var scores = document.getElementById("scores");
+var header = document.getElementById("header");
 
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function () {
@@ -130,6 +131,7 @@ function startQuiz() {
 
   // checks for correct answer
   function checkAnswer(selectedOption, correctAnswer) {
+    showEl(result, true);
     if (selectedOption === correctAnswer) {
       // answer is correct, move on to the next question
       result.innerText = "Correct!";
@@ -180,6 +182,7 @@ function displayHighscores() {
     `;
     }
   }
+  showEl(header, false);
 }
 
 gobackButton.addEventListener("click", function () {

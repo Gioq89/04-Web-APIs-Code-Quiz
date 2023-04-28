@@ -63,10 +63,6 @@ div button:active {
   transform: translateY(4px);
 }
 
-.hide {
-  display: none;
-}
-
 #questions-container {
   display: flex;
   flex-direction: column;
@@ -154,4 +150,8 @@ div button:active {
 .userInfoContainer:nth-child(even) {
   background-color: #3f4646;
   color: white;
+}
+
+.hide {
+  display: none;
 }
