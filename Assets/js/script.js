@@ -55,6 +55,18 @@ var intervalId;
 var result = document.getElementById("result");
 var correctSound = new Audio("Assets/sounds/correct.wav");
 var incorrectSound = new Audio("Assets/sounds/incorrect.wav");
+var submitButton = document.getElementById("submit");
+var usersArray = [];
+
+submitButton.addEventListener("click", function () {
+  var userInitials = document.getElementById("name").value;
+  var highscoreTable = {
+    intials: userInitials,
+    score: seconds,
+  };
+  usersArray.push(highscoreTable);
+  window.localStorage.setItem("pop", JSON.stringify(usersArray));
+});
 // event listener waiting for start quiz button to be clicked
 start.addEventListener("click", function () {
   startTimer();
@@ -111,7 +123,6 @@ function startQuiz() {
   // checks for correct answer
   function checkAnswer(selectedOption, correctAnswer) {
     if (selectedOption === correctAnswer) {
-      debugger;
       // answer is correct, move on to the next question
       result.innerText = "Correct!";
       result.setAttribute("class", "correct result");
